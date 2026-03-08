@@ -137,7 +137,7 @@ section { padding: 104px 0; }
 }
 .nav-logo {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-decoration: none;
