@@ -274,9 +274,8 @@ section { padding: 104px 0; }
   display: block;
   height: clamp(80px, 14vw, 160px);
   width: auto;
-  margin: 0 auto 16px;
+  margin: 0 auto 24px;
   filter: invert(1);
-  mix-blend-mode: screen;
   opacity: 0;
   animation: fadeUp 0.9s var(--ease) 0.5s forwards;
 }
@@ -819,7 +818,6 @@ footer {
   max-width: 100px;
   object-fit: contain;
   filter: invert(1);
-  mix-blend-mode: screen;
   opacity: 0.5;
   transition: opacity var(--t);
 }
