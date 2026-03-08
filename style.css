@@ -403,6 +403,9 @@ section { padding: 104px 0; }
   background: #0a0a0a;
   overflow: hidden;
 }
+.portfolio-card.portrait .card-media {
+  aspect-ratio: 9 / 16;
+}
 .card-thumbnail {
   position: absolute;
   inset: 0;
