@@ -408,6 +408,8 @@ section { padding: 104px 0; }
 .portfolio-card.hidden { display: none; }
 .portfolio-card.full-width {
   grid-column: 1 / -1;
+  max-width: 700px;
+  justify-self: center;
 }
 
 /* Card media */
@@ -418,7 +420,7 @@ section { padding: 104px 0; }
   overflow: hidden;
 }
 .portfolio-card.portrait .card-media {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 3 / 4;
 }
 .card-thumbnail {
   position: absolute;
