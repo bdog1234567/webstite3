@@ -390,11 +390,9 @@ section { padding: 104px 0; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
-  justify-items: center;
-  max-width: 960px;
-  margin: 0 auto;
 }
 .portfolio-card {
+  width: 100%;
   background: var(--bg-card);
   border-radius: 3px;
   overflow: hidden;
@@ -408,9 +406,6 @@ section { padding: 104px 0; }
   box-shadow: 0 12px 40px rgba(0,0,0,0.5);
 }
 .portfolio-card.hidden { display: none; }
-.portfolio-card {
-  width: 100%;
-}
 .portfolio-card.full-width {
   grid-column: 1 / -1;
 }
