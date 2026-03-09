@@ -388,8 +388,11 @@ section { padding: 104px 0; }
 /* Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 22px;
+  justify-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 .portfolio-card {
   background: var(--bg-card);
@@ -405,11 +408,11 @@ section { padding: 104px 0; }
   box-shadow: 0 12px 40px rgba(0,0,0,0.5);
 }
 .portfolio-card.hidden { display: none; }
+.portfolio-card {
+  width: 100%;
+}
 .portfolio-card.full-width {
   grid-column: 1 / -1;
-  max-width: 900px;
-  justify-self: center;
-  width: 100%;
 }
 
 /* Card media */
