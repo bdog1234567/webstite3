@@ -17,8 +17,8 @@
   --text-muted:    #676770;
   --text-subtle:   #38383f;
   --border:        rgba(255, 255, 255, 0.055);
-  --nav-h:         68px;
-  --ease:          cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-h:         64px;
+  --ease:          cubic-bezier(0.23, 1, 0.32, 1);
   --t:             0.28s;
   --t-slow:        0.55s;
   --font-display:  'Bebas Neue', sans-serif;
@@ -29,7 +29,7 @@
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { }
 body {
   background: var(--bg);
   color: var(--text);
@@ -52,7 +52,7 @@ button { font: inherit; }
   margin: 0 auto;
   padding: 0 28px;
 }
-section { padding: 104px 0; }
+section { padding: 130px 0; }
 
 /* === TYPOGRAPHY === */
 .section-label {
@@ -63,16 +63,8 @@ section { padding: 104px 0; }
   font-size: 0.7rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: rgba(255, 255, 255, 0.35);
   margin-bottom: 10px;
-}
-.section-label::before {
-  content: '';
-  display: block;
-  flex-shrink: 0;
-  width: 22px;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), rgba(0, 200, 255, 0.4));
 }
 .section-title {
   font-family: var(--font-heading);
@@ -274,6 +266,34 @@ section { padding: 104px 0; }
   text-align: center;
   padding: var(--nav-h) 28px 0;
 }
+
+/* Video text mask — video plays behind logo + title */
+.hero-mask-group {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-video {
+  position: absolute;
+  inset: -20%;
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-mask-overlay {
+  position: relative;
+  z-index: 1;
+  background: #000;
+  mix-blend-mode: multiply;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .hero-label {
   font-family: var(--font-heading);
   font-size: 0.68rem;
@@ -298,10 +318,7 @@ section { padding: 104px 0; }
   font-size: clamp(48px, 8vw, 100px);
   line-height: 0.88;
   letter-spacing: 0.03em;
-  background: linear-gradient(to bottom, #ffffff 30%, rgba(210, 235, 255, 0.82) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
   margin-bottom: 18px;
   opacity: 0;
   animation: fadeUp 0.9s var(--ease) 0.7s forwards;
@@ -923,7 +940,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-  section { padding: 72px 0; }
+  section { padding: 88px 0; }
 
   /* Mobile nav */
   .nav-toggle { display: flex; }
