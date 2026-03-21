@@ -9,6 +9,189 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ============================================================
+   LENIS SMOOTH SCROLL
+   ============================================================ */
+const isTouchDevice = 'ontouchstart' in window;
+let lenis;
+
+if (!isTouchDevice) {
+  lenis = new Lenis();
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+} else {
+  ScrollTrigger.normalizeScroll(true);
+}
+
+/* ============================================================
+   GSAP SCROLLTRIGGER SETUP
+   ============================================================ */
+gsap.registerPlugin(ScrollTrigger);
+
+/* Utility: split element text into word spans for animation */
+function splitWords(el) {
+  const text = el.textContent.trim();
+  const words = text.split(/\s+/);
+  el.innerHTML = words.map(word =>
+    `<span style="display:inline-block;overflow:hidden"><span class="word-inner" style="display:inline-block">${word}</span></span>`
+  ).join(' ');
+  return el.querySelectorAll('.word-inner');
+}
+
+/* ============================================================
+   HERO ENTRANCE ANIMATION
+   ============================================================ */
+const heroTl = gsap.timeline({ delay: 0.3 });
+
+heroTl
+  .fromTo('.hero-label',
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+  .fromTo('.hero-logo',
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.45')
+  .fromTo('.hero-title',
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.65')
+  .fromTo('.hero-divider',
+    { opacity: 0, scaleX: 0 },
+    { opacity: 1, scaleX: 1, duration: 0.5, ease: 'power3.out' }, '-=0.6')
+  .fromTo('.hero-name',
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.35')
+  .fromTo('.hero-tagline',
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.35')
+  .fromTo('.hero-actions',
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.35')
+  .fromTo('.hero-scroll',
+    { opacity: 0 },
+    { opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.2');
+
+/* ============================================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================================ */
+
+/* Section titles — word-by-word reveal */
+document.querySelectorAll('.section-title').forEach(title => {
+  const words = splitWords(title);
+  gsap.from(words, {
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.08,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: title,
+      start: 'top 85%',
+      once: true,
+    },
+  });
+});
+
+/* Section labels — fade in */
+document.querySelectorAll('.section-label').forEach(label => {
+  gsap.from(label, {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: label,
+      start: 'top 85%',
+      once: true,
+    },
+  });
+});
+
+/* Portfolio cards — staggered fade up */
+gsap.from('.portfolio-card', {
+  y: 40,
+  opacity: 0,
+  duration: 0.7,
+  stagger: 0.1,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.portfolio-grid',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* Portfolio filters — fade in */
+gsap.from('.portfolio-filters', {
+  y: 20,
+  opacity: 0,
+  duration: 0.6,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.portfolio-filters',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* About section — sequential reveal */
+const aboutElements = document.querySelectorAll('.about-content > *');
+gsap.from(aboutElements, {
+  y: 30,
+  opacity: 0,
+  duration: 0.6,
+  stagger: 0.15,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.about-content',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* About image — fade in */
+gsap.from('.about-image', {
+  y: 30,
+  opacity: 0,
+  duration: 0.7,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.about-image',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* Contact info — fade up */
+gsap.from('.contact-info > *', {
+  y: 30,
+  opacity: 0,
+  duration: 0.6,
+  stagger: 0.1,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.contact-info',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* Contact form — fade up */
+gsap.from('.contact-form-wrapper', {
+  y: 30,
+  opacity: 0,
+  duration: 0.6,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.contact-form-wrapper',
+    start: 'top 85%',
+    once: true,
+  },
+});
+
+/* ============================================================
    NAVBAR — transparent → frosted glass on scroll
    ============================================================ */
 const navbar = document.getElementById('navbar');
@@ -117,23 +300,6 @@ portfolioCards.forEach(card => {
     });
   }
 });
-
-/* ============================================================
-   SCROLL REVEAL — Intersection Observer
-   ============================================================ */
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target); // animate once
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
-);
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ============================================================
    CONTACT FORM
