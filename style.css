@@ -651,13 +651,6 @@ section { padding: 130px 0; }
   overflow: hidden;
 }
 
-/* Top accent line */
-.contact-top-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent 0%, var(--accent) 40%, rgba(123, 79, 255, 0.6) 60%, transparent 100%);
-  box-shadow: 0 0 18px rgba(0, 200, 255, 0.18);
-}
 
 .contact-grid {
   display: grid;
@@ -668,7 +661,7 @@ section { padding: 130px 0; }
 
 .contact-info .section-title { margin-bottom: 14px; }
 .contact-tagline {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.9rem;
   line-height: 1.85;
   margin-bottom: 38px;
@@ -685,7 +678,7 @@ section { padding: 130px 0; }
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.88rem;
   text-decoration: none;
   transition: color var(--t);
@@ -721,14 +714,17 @@ section { padding: 130px 0; }
 .social-link {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 15px;
+  justify-content: center;
+  gap: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 2px;
   color: var(--text-muted);
   text-decoration: none;
   font-family: var(--font-heading);
-  font-size: 0.68rem;
+  font-size: 0;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: all var(--t) var(--ease);
@@ -739,8 +735,8 @@ section { padding: 130px 0; }
   background: var(--accent-dim);
 }
 .social-link svg {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
   fill: currentColor;
   flex-shrink: 0;
 }
@@ -762,15 +758,15 @@ section { padding: 130px 0; }
   font-size: 0.67rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
 }
 .form-group input,
 .form-group textarea,
 .form-group select {
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.035);
   border-radius: 2px;
-  padding: 11px 15px;
+  padding: 15px;
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.88rem;
@@ -799,9 +795,20 @@ section { padding: 130px 0; }
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--text-subtle);
+  color: rgba(255, 255, 255, 0.2);
 }
-.form-submit { width: 100%; justify-content: center; }
+.form-submit {
+  width: 100%;
+  justify-content: center;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+.form-submit:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
 .form-success {
   display: none;
   text-align: center;
@@ -823,7 +830,6 @@ section { padding: 130px 0; }
    ============================================================ */
 footer {
   background: var(--bg);
-  border-top: 1px solid var(--border);
   padding: 28px 0;
 }
 .footer-container {
@@ -849,13 +855,13 @@ footer {
   max-width: 100px;
   object-fit: contain;
   filter: invert(1);
-  opacity: 0.5;
+  opacity: 0.4;
   transition: opacity var(--t);
 }
 .footer-logo:hover .footer-logo-img { opacity: 0.9; }
 .footer-copy {
   font-size: 0.72rem;
-  color: var(--text-subtle);
+  color: rgba(255, 255, 255, 0.15);
 }
 .footer-links {
   display: flex;
@@ -867,11 +873,11 @@ footer {
   font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-subtle);
+  color: rgba(255, 255, 255, 0.2);
   text-decoration: none;
   transition: color var(--t);
 }
-.footer-links a:hover { color: var(--accent); }
+.footer-links a:hover { color: rgba(255, 255, 255, 0.5); }
 
 /* ============================================================
    ANIMATIONS
