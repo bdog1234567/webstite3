@@ -9,12 +9,16 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ============================================================
-   LENIS SMOOTH SCROLL
+   GSAP + LENIS SETUP
    ============================================================ */
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+
+gsap.registerPlugin(ScrollTrigger);
+
 const isTouchDevice = 'ontouchstart' in window;
 let lenis;
 
-if (!isTouchDevice) {
+if (!isTouchDevice && typeof Lenis !== 'undefined') {
   lenis = new Lenis();
 
   lenis.on('scroll', ScrollTrigger.update);
@@ -26,11 +30,6 @@ if (!isTouchDevice) {
 } else {
   ScrollTrigger.normalizeScroll(true);
 }
-
-/* ============================================================
-   GSAP SCROLLTRIGGER SETUP
-   ============================================================ */
-gsap.registerPlugin(ScrollTrigger);
 
 /* Utility: split element text into word spans for animation */
 function splitWords(el) {
@@ -190,6 +189,13 @@ gsap.from('.contact-form-wrapper', {
     once: true,
   },
 });
+
+} else {
+  /* GSAP not available — make hero content visible */
+  document.querySelectorAll('.hero-content > *, .hero-scroll').forEach(el => {
+    el.style.opacity = '1';
+  });
+}
 
 /* ============================================================
    NAVBAR — transparent → frosted glass on scroll
