@@ -144,11 +144,11 @@ section { padding: 130px 0; }
   font-weight: 700;
   letter-spacing: 0.22em;
   text-decoration: none;
-  color: var(--text);
+  color: rgba(255, 255, 255, 0.85);
   transition: color var(--t);
   flex-shrink: 0;
 }
-.nav-logo:hover { color: var(--accent); }
+.nav-logo:hover { color: rgba(255, 255, 255, 1); }
 
 .nav-links {
   display: flex;
@@ -158,26 +158,27 @@ section { padding: 130px 0; }
 }
 .nav-links a {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
   transition: color var(--t);
 }
-.nav-links a:hover { color: var(--text); }
-.nav-links a.active-link { color: var(--text); }
+.nav-links a:hover { color: rgba(255, 255, 255, 0.85); }
+.nav-links a.active-link { color: rgba(255, 255, 255, 0.85); }
 
 .nav-cta {
   padding: 7px 18px !important;
-  border: 1px solid var(--accent) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-radius: 2px;
-  color: var(--accent) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
   transition: all var(--t) !important;
 }
 .nav-cta:hover {
-  background: var(--accent) !important;
-  color: #000 !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: transparent !important;
 }
 
 /* Hamburger */
