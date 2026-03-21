@@ -65,8 +65,13 @@
 
       <div class="hero-content">
         <p class="hero-label">VFX &nbsp;·&nbsp; AI GENERATIVE &nbsp;·&nbsp; FILM</p>
-        <img src="logo.png" alt="Nohea Media" class="hero-logo" />
-        <h1 class="hero-title">NOHEA MEDIA</h1>
+        <div class="hero-mask-group">
+          <video class="hero-video" src="Nomosaic4.mp4" autoplay muted loop playsinline></video>
+          <div class="hero-mask-overlay">
+            <img src="logo.png" alt="Nohea Media" class="hero-logo" />
+            <h1 class="hero-title">NOHEA MEDIA</h1>
+          </div>
+        </div>
         <p class="hero-name">Braden Di Mauro</p>
         <p class="hero-tagline">Visual storytelling through cutting-edge technology</p>
         <div class="hero-actions">
@@ -410,6 +415,9 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
