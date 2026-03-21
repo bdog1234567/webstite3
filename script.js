@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* Utility: split element text into word spans for animation */
 function splitWords(el) {
-  const text = el.textContent.trim();
+  const text = el.innerText.trim();
   const words = text.split(/\s+/);
   el.innerHTML = words.map(word =>
     `<span style="display:inline-block;overflow:hidden"><span class="word-inner" style="display:inline-block">${word}</span></span>`
