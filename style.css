@@ -27,13 +27,12 @@
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { }
+html { overflow-x: hidden; }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.65;
-  overflow-x: hidden;
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
