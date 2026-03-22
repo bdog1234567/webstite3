@@ -342,7 +342,7 @@ if (contactForm && formSuccess) {
       console.error('[Nohea Media] Form error:', err);
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
-      alert('Message could not be sent. Please email directly at hello@noheamedia.com');
+      alert('Message could not be sent. Please email directly at bradendimauro@gmail.com');
     }
   });
 }
