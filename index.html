@@ -333,9 +333,12 @@
             <form
               id="contactForm"
               class="contact-form"
-              action="https://formspree.io/f/xwvrjybb"
+              action="https://api.web3forms.com/submit"
               method="POST"
             >
+              <input type="hidden" name="access_key" value="bda8951d-df78-4dde-9ac9-9f0f84040e35" />
+              <input type="hidden" name="subject" value="New Contact from Nohea Media" />
+              <input type="hidden" name="from_name" value="Nohea Media Website" />
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />

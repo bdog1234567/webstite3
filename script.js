@@ -309,8 +309,7 @@ portfolioCards.forEach(card => {
 
 /* ============================================================
    CONTACT FORM
-   Uses Formspree by default (https://formspree.io — free tier)
-   Or add data-netlify="true" to the form tag for Netlify Forms
+   Uses Web3Forms (https://web3forms.com — free, emails directly)
    ============================================================ */
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
@@ -332,11 +331,13 @@ if (contactForm && formSuccess) {
         headers: { 'Accept': 'application/json' },
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         contactForm.style.display = 'none';
         formSuccess.style.display = 'block';
       } else {
-        throw new Error(`Server responded with ${response.status}`);
+        throw new Error(data.message || 'Form submission failed');
       }
     } catch (err) {
       console.error('[Nohea Media] Form error:', err);
