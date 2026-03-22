@@ -295,6 +295,7 @@ section { padding: 130px 0; }
   height: clamp(100px, 14vw, 180px);
   width: auto;
   margin: 0 auto 24px;
+  filter: invert(1);
   mix-blend-mode: difference;
   opacity: 0;
 }
