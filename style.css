@@ -422,7 +422,7 @@ section { padding: 130px 0; }
 }
 .filter-btn.active {
   color: rgba(255, 255, 255, 0.85);
-  border-bottom-color: var(--accent);
+  border-bottom-color: #ff6b9d;
   background: none;
   box-shadow: none;
 }
