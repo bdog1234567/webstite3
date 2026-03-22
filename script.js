@@ -50,7 +50,7 @@ heroTl
   .fromTo('.hero-label',
     { opacity: 0, y: 30 },
     { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
-  .fromTo('.hero-logo-wrap',
+  .fromTo('.hero-logo',
     { opacity: 0, y: 30 },
     { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.45')
   .fromTo('.hero-title',
