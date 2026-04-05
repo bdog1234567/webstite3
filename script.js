@@ -190,6 +190,56 @@ gsap.from('.contact-form-wrapper', {
   },
 });
 
+/* ============================================================
+   HERO PARALLAX
+   ============================================================ */
+/* Video pans from top to bottom as you scroll through the hero */
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  const videoPos = { val: 10 };
+  gsap.to(videoPos, {
+    val: 90,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    },
+    onUpdate() {
+      heroVideo.style.objectPosition = `center ${videoPos.val}%`;
+    },
+  });
+}
+
+gsap.to('.hero-content', {
+  yPercent: 55,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '#hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true,
+  },
+});
+
+/* ============================================================
+   MAGNETIC BUTTONS
+   ============================================================ */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.35;
+    const dy = (e.clientY - cy) * 0.35;
+    gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+  });
+});
+
 } else {
   /* GSAP not available — make hero content visible */
   document.querySelectorAll('.hero-content > *, .hero-scroll').forEach(el => {
@@ -365,7 +415,41 @@ const sectionObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.4 }
+  { threshold: 0, rootMargin: '-30% 0px -30% 0px' }
 );
 
 sections.forEach(s => sectionObserver.observe(s));
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+const cursorRing = document.getElementById('cursor-ring');
+const hoverTargets = 'a, button, [role="button"], .portfolio-card, .filter-btn';
+
+if (cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  let mouseX = 0, mouseY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    gsap.to(cursorRing, {
+      x: mouseX,
+      y: mouseY,
+      duration: 0.12,
+      ease: 'power2.out',
+      opacity: 1,
+    });
+  });
+
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('is-hovering'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('is-hovering'));
+  });
+
+  document.addEventListener('mouseleave', () => {
+    gsap.to(cursorRing, { opacity: 0, duration: 0.2 });
+  });
+  document.addEventListener('mouseenter', () => {
+    gsap.to(cursorRing, { opacity: 1, duration: 0.2 });
+  });
+}
