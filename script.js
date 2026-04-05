@@ -19,11 +19,11 @@ if (preloader) {
 /* ============================================================
    GSAP + LENIS SETUP
    ============================================================ */
+const isTouchDevice = 'ontouchstart' in window;
+
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
 gsap.registerPlugin(ScrollTrigger);
-
-const isTouchDevice = 'ontouchstart' in window;
 let lenis;
 
 if (!isTouchDevice && typeof Lenis !== 'undefined') {
@@ -348,6 +348,12 @@ portfolioCards.forEach(card => {
       if (!videoId || videoId === 'YOUTUBE_VIDEO_ID') {
         // Guide the user if they haven't set a video ID yet
         console.warn('[Nohea Media] Replace YOUTUBE_VIDEO_ID in index.html with your actual YouTube video ID.');
+        return;
+      }
+
+      // On touch devices open YouTube directly (iOS blocks iframe autoplay with sound)
+      if (isTouchDevice) {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank', 'noopener');
         return;
       }
 
