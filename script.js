@@ -351,12 +351,6 @@ portfolioCards.forEach(card => {
         return;
       }
 
-      // On touch devices open YouTube directly (iOS blocks iframe autoplay with sound)
-      if (isTouchDevice) {
-        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank', 'noopener');
-        return;
-      }
-
       const iframe = document.createElement('iframe');
       iframe.className = 'card-iframe';
       iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&color=white`;
