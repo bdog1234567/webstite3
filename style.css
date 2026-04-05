@@ -45,6 +45,19 @@ button { font: inherit; }
   outline-offset: 2px;
 }
 
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  transition: opacity 0.6s var(--ease);
+  pointer-events: none;
+}
+#preloader.fade-out {
+  opacity: 0;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

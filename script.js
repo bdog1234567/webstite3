@@ -8,6 +8,14 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+/* === Preloader === */
+const preloader = document.getElementById('preloader');
+if (preloader) {
+  window.addEventListener('load', () => {
+    setTimeout(() => preloader.classList.add('fade-out'), 100);
+  });
+}
+
 /* ============================================================
    GSAP + LENIS SETUP
    ============================================================ */
