@@ -70,6 +70,14 @@ section { padding: 130px 0; }
   color: rgba(255, 255, 255, 0.35);
   margin-bottom: 10px;
 }
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 5vw, 3.8rem);
@@ -170,7 +178,21 @@ section { padding: 130px 0; }
   transition: color var(--t);
 }
 .nav-links a:hover { color: var(--accent); }
-.nav-links a.active-link { color: rgba(255, 255, 255, 0.85); }
+.nav-links a.active-link {
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+}
+.nav-links a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
 .nav-cta {
   padding: 7px 18px !important;
@@ -277,7 +299,9 @@ section { padding: 130px 0; }
   left: 50%;
   transform: translate(-50%, -50%);
   height: 100%;
-  object-fit: contain;
+  width: auto;
+  min-width: 65%;
+  object-fit: cover;
   z-index: 0;
 }
 
@@ -443,7 +467,15 @@ section { padding: 130px 0; }
 }
 .portfolio-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 30px rgba(255, 107, 157, 0.04);
+  box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 30px rgba(255, 107, 157, 0.14);
+}
+.portfolio-card:hover .play-btn {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: var(--accent-glow);
+}
+.portfolio-card:hover .card-tag {
+  color: var(--accent);
 }
 .portfolio-card.hidden { display: none; }
 .portfolio-card.full-width {
@@ -586,6 +618,18 @@ section { padding: 130px 0; }
 /* Image column */
 .about-image {
   position: relative;
+  overflow: visible;
+}
+.about-image::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 36px;
+  height: 36px;
+  border-top: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+  pointer-events: none;
 }
 
 
@@ -836,6 +880,7 @@ section { padding: 130px 0; }
 footer {
   background: var(--bg);
   padding: 28px 0;
+  border-top: 1px solid rgba(255, 107, 157, 0.2);
 }
 .footer-container {
   max-width: var(--container);
