@@ -8,6 +8,30 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+/* === Scroll progress bar === */
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    scrollProgress.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+}
+
+/* === Tap ripple (mobile) === */
+if (isTouchDevice) {
+  document.addEventListener('touchstart', e => {
+    const touch = e.touches[0];
+    const ripple = document.createElement('div');
+    ripple.className = 'tap-ripple';
+    ripple.style.left = touch.clientX + 'px';
+    ripple.style.top = touch.clientY + 'px';
+    ripple.style.width = '52px';
+    ripple.style.height = '52px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  }, { passive: true });
+}
+
 /* === Preloader === */
 const preloader = document.getElementById('preloader');
 if (preloader) {

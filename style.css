@@ -45,6 +45,35 @@ button { font: inherit; }
   outline-offset: 2px;
 }
 
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 9998;
+  pointer-events: none;
+  transform-origin: left;
+  box-shadow: 0 0 8px rgba(255, 107, 157, 0.5);
+}
+
+/* Tap ripple */
+.tap-ripple {
+  position: fixed;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0.8;
+  animation: tapRipple 0.55s var(--ease) forwards;
+}
+@keyframes tapRipple {
+  to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
 /* Preloader */
 #preloader {
   position: fixed;
