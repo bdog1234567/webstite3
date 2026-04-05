@@ -426,7 +426,7 @@ sections.forEach(s => sectionObserver.observe(s));
 const cursorRing = document.getElementById('cursor-ring');
 const hoverTargets = 'a, button, [role="button"], .portfolio-card, .filter-btn';
 
-if (cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+if (cursorRing && typeof gsap !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   let mouseX = 0, mouseY = 0;
 
   document.addEventListener('mousemove', e => {
