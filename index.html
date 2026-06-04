@@ -23,6 +23,30 @@
   <meta name="twitter:description" content="VFX Artist & AI Generative Content Creator" />
   <meta name="twitter:image" content="https://noheamedia.com/og-image.png" />
 
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Braden Di Mauro",
+    "url": "https://noheamedia.com/",
+    "image": "https://noheamedia.com/og-image.png",
+    "jobTitle": "VFX Artist & AI Generative Content Creator",
+    "email": "bradendimauro@gmail.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Nohea Media",
+      "url": "https://noheamedia.com/"
+    },
+    "knowsAbout": ["VFX","Compositing","AI Generative Video","Motion Graphics","Color Grading","After Effects","Nuke","DaVinci Resolve","Cinema 4D"],
+    "sameAs": [
+      "https://www.youtube.com/@NoheaMediaFilms",
+      "https://www.instagram.com/bradendimauro/",
+      "https://www.linkedin.com/in/bradendimauro/"
+    ]
+  }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
@@ -63,7 +87,19 @@
     <!-- ===================== HERO ===================== -->
     <section id="hero" aria-label="Hero">
       <div class="hero-bg" aria-hidden="true">
-        <video class="hero-video" src="newhero.mp4" autoplay muted loop playsinline preload="auto" poster="og-image.png"></video>
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="og-image.png"
+               data-src-desktop="newhero.mp4" data-src-mobile="newhero-mobile.mp4"></video>
+        <script>
+          /* Serve a lighter hero video to phones / data-saver connections */
+          (function () {
+            var v = document.querySelector('.hero-video');
+            if (!v) return;
+            var smallScreen = window.matchMedia('(max-width: 768px)').matches;
+            var c = navigator.connection || {};
+            var saveData = c.saveData === true || /(^|-)2g$/.test(c.effectiveType || '');
+            v.src = (smallScreen || saveData) ? v.dataset.srcMobile : v.dataset.srcDesktop;
+          })();
+        </script>
         <div class="hero-gradient"></div>
         <div class="hero-grain"></div>
       </div>
@@ -129,7 +165,7 @@
           <article class="portfolio-card" data-category="ai" data-video-id="crHRXVX3aHU">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="H&amp;M Spec Ad" class="thumb-img" loading="lazy" />
+                <img alt="H&amp;M Spec Ad" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play H&amp;M Spec Ad">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -147,7 +183,7 @@
           <article class="portfolio-card" data-category="ai" data-video-id="mf-8dzWB6WU">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="Saint Laurent Spec Ad" class="thumb-img" loading="lazy" />
+                <img alt="Saint Laurent Spec Ad" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play Saint Laurent Spec Ad">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -165,7 +201,7 @@
           <article class="portfolio-card" data-category="ai" data-video-id="7QEYkuHp5iA">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="South Bay Real Estate Spec Ad" class="thumb-img" loading="lazy" />
+                <img alt="South Bay Real Estate Spec Ad" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play South Bay Real Estate Spec Ad">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -183,7 +219,7 @@
           <article class="portfolio-card" data-category="vfx" data-video-id="ACfLZuihFbk">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="Fire VFX" class="thumb-img" loading="lazy" />
+                <img alt="Fire VFX" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play Fire VFX">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -201,7 +237,7 @@
           <article class="portfolio-card" data-category="vfx" data-video-id="tlSXv_czMxo">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="3D Tracking" class="thumb-img" loading="lazy" />
+                <img alt="3D Tracking" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play 3D Tracking">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -219,7 +255,7 @@
           <article class="portfolio-card" data-category="editing" data-video-id="-38tTSXcPxs">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="Director Reel" class="thumb-img" loading="lazy" />
+                <img alt="Director Reel" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play Director Reel">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -237,7 +273,7 @@
           <article class="portfolio-card" data-category="editing" data-video-id="QGd1htOqKSw">
             <div class="card-media">
               <div class="card-thumbnail">
-                <img src="" alt="Logo Animation" class="thumb-img" loading="lazy" />
+                <img alt="Logo Animation" class="thumb-img" loading="lazy" />
                 <div class="card-overlay">
                   <button class="play-btn" aria-label="Play Logo Animation">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
